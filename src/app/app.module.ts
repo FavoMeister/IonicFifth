@@ -12,6 +12,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { NgxsModule } from '@ngxs/store';
+import { CategoriesStateModel } from './state/categories.state';
 
 export function HttpLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http, './assets/i18n/', '.json')
@@ -31,6 +33,9 @@ export function HttpLoaderFactory(http: HttpClient){
         deps: [HttpClient]
       }
     }),
+    NgxsModule.forRoot([
+      CategoriesStateModel
+    ]),
     ToolbarComponent,
     FooterComponent
   ],
